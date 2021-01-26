@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Assistant', sans-serif;
+    z-index: 2;
+
+    
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+
+    @include respond(smallest) {
+        font-size: 80%;
+    }
+}
+
+body {
+    position: relative;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+a:link,
+a:active,
+a:visited,
+a:focus {
+    // color: black;
+    text-decoration: none;
+    
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+input,
+textarea {
+    outline: none;
+    border: transparent;
+}
+
+h1, h2, p, li {
+
+    direction: rtl;
+    text-align: right;
+    // font-family: 'Modak', cursive;
+
+    &.non-hebrew {
+        direction: ltr;
+    }
+} 
