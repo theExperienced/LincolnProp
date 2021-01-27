@@ -35,9 +35,10 @@ a:focus {
     
 }
 
-button {
+button, input[type=submit] {
     background-color: transparent;
     border: none;
+    cursor: pointer;
     outline: none;
 }
 
@@ -47,10 +48,11 @@ textarea {
     border: transparent;
 }
 
-h1, h2, p, li {
+h1, h2, p, li, label, span, input, textarea {
 
     direction: rtl;
     text-align: right;
+    font-weight: 100;
     // font-family: 'Modak', cursive;
 
     &.non-hebrew {

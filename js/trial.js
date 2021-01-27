@@ -64,13 +64,13 @@ const init = function () {
     // camera.position.set(-30, 3, 30);
     // camera.lookAt(0, 0, 100);
 
-    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true,  preserveDrawingBuffer: true});
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setPixelRatio( window.devicePixelRatio );
-    // document.querySelector('.canvas').appendChild(renderer.domElement);
+    document.querySelector('.canvas').appendChild(renderer.domElement);
 
     scene.background = new THREE.Color(0xfefefe);
-    scene.fog = new THREE.Fog(0xfefefe, 100, 350); // firmamentRadius * 5, firmamentRadius * 10);
+    scene.fog = new THREE.Fog(0xfefefe, -100, 500); // firmamentRadius * 5, firmamentRadius * 10);
     // scene.fog = new THREE.FogExp2(0x000000, .0134262);
 
 
@@ -202,9 +202,9 @@ const init = function () {
     wall.position.set(10,10,-10);
     // city.add(wall);
 
-    towerMaxSide = 20;
-    towerMaxHeight = 290;
-    numOfTowers = 20;
+    towerMaxSide = 35;
+    towerMaxHeight = 200;
+    numOfTowers = 13;
     takenSlots = [];
     towers = [];
     towerColors = chroma.scale(['#101010', '#202020']).colors(20);
@@ -213,9 +213,9 @@ const init = function () {
         
     for (let i = 0; i < numOfTowers; i++) {
         towerObject = new THREE.Object3D();
-        towerHeight = towerMaxHeight * Math.random() + 45;
-        currSide = towerMaxSide * Math.random() + 14;
-        towerGeo = new THREE.BoxBufferGeometry(currSide, towerHeight, currSide, 25, 25, 5);
+        towerHeight = towerMaxHeight * Math.random() + 300;
+        currSide = towerMaxSide * Math.random() + 10;
+        towerGeo = new THREE.BoxBufferGeometry(currSide, currSide, towerHeight, 25, 25, 5);
         // towerGeo.translate( 0, 0.5, 0 );
         towerMat = new THREE.MeshBasicMaterial({
             color: towerColors[Math.floor(Math.random() * towerColors.length)],
@@ -238,7 +238,7 @@ const init = function () {
             
             // frame.position.set(x, 0, z);
             towers.push(tower);
-            towerObject.add(frame);
+            // towerObject.add(frame);
         }
         towerObject.add(tower);
 
@@ -261,18 +261,24 @@ const init = function () {
                 // metalness: .9,
             });
             antena = new THREE.Mesh(antenaGeo, antenaMat);
-            towerObject.add(antena);
+            // towerObject.add(antena);
             towerObjects.push(towerObject);
             antena.position.set(0, towerHeight / 2 + .1 + topYPos, 0);
         }
         city.add(towerObject);
         
-        x = (Math.random() -.5) * 150;
+        // x = (Math.random() -.5) * 450;
+        // // y = towerHeight / 2;
+        // y = 0;
+        // z = (Math.random() - .5) * 450;
+
+        
+        x = Math.cos(20 + i * 30) * 260;
         // y = towerHeight / 2;
         y = 0;
-        z = (Math.random() - .5) * 150;
+        z = Math.random(20 + i * 30) * 260;
         towerObject.position.set(x, y, z);
-        // towerObject.lookAt(0, 10, 0);
+        towerObject.lookAt(140, 1120, 0);
     }
 
     
@@ -318,14 +324,14 @@ const init = function () {
 
     pointLight = new THREE.PointLight(0xb522a1, .5);
     // pointLight.position.set(10, 32, 0);
-    scene.add(pointLight);
+    // scene.add(pointLight);
     const sphereSize = 1;
     const pointLightHelper = new THREE.PointLightHelper( pointLight, sphereSize );
-    scene.add( pointLightHelper );
+    // scene.add( pointLightHelper );
 
     pointLight2 = new THREE.PointLight(0x42f587, .5);
     const pointLightHelper2 = new THREE.PointLightHelper( pointLight2, sphereSize );
-    scene.add( pointLightHelper2 );
+    // scene.add( pointLightHelper2 );
 
 
 
@@ -350,8 +356,8 @@ const update = function () {
     now = Date.now() * .00045;
 
     if(cameraChanged) {
-        camera.position.set(0, 300, 300);
-        camera.lookAt(170, 40, 0);
+        camera.position.set(0, -240, 0);
+        camera.lookAt(40, 1110, 0);
         cameraChanged = false;
     }
     
@@ -417,34 +423,91 @@ const distance = (x, z) => {
     return Math.sqrt(x*x + z*z);
 };
 
+window.addEventListener('click', e => {
+    console.log('click outide', e, window.innerHeight)
+    if(e.clientX > window.innerHeight * .9 && e.screenY > window.innerHeight * .9) {
+        console.log('click');
+        takeScreenshot();
+    }
+})
+const takeScreenshot = () => {
+
+    // open in new window like this
+    //
+    // var w = window.open('', '');
+    // w.document.title = "Screenshot";
+    // //w.document.body.style.backgroundColor = "red";
+    // var img = new Image();
+    // // Without 'preserveDrawingBuffer' set to true, we must render now
+    // renderer.render(scene, camera);
+    // img.src = renderer.domElement.toDataURL();
+    // w.document.body.appendChild(img);
+
+
+
+    saveAsImage();
+
+    
+} 
+
+
+var strDownloadMime = "image/octet-stream";
+function saveAsImage() {
+    var imgData, imgNode;
+
+    try {
+        var strMime = "image/jpeg";
+        imgData = renderer.domElement.toDataURL(strMime);
+
+        saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+
+    } catch (e) {
+        console.log(e);
+        return;
+    }
+
+}
+
+var saveFile = function (strData, filename) {
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+        document.body.appendChild(link); //Firefox requires the link to be in the body
+        link.download = filename;
+        link.href = strData;
+        link.click();
+        document.body.removeChild(link); //remove the link when done
+    } else {
+        location.replace(uri);
+    }
+}
 init();
-// animate();
+animate();
 
 
 
 /////////////////GSAP
 
 
-gsap.timeline({})
-.from(city.rotation, {
-    y: 0,
-    duration: 2,
-    ease: 'power1.Out',
-    onStart: () => {
-        towerObjects.forEach(tower => {
-            gsap.from(tower.scale, {
-                // delay: 1,
-                // x: 0,
-                y: (i, x) => {
-                    console.log(i, x)
-                    return 0;
-                },
-                // z: 0,
-                duration: Math.random() * 1 + 3
-            })
-        })
-    }
-})
+// gsap.timeline({})
+// .from(city.rotation, {
+//     y: 0,
+//     duration: 2,
+//     ease: 'power1.Out',
+//     onStart: () => {
+//         towerObjects.forEach(tower => {
+//             gsap.from(tower.scale, {
+//                 // delay: 1,
+//                 // x: 0,
+//                 y: (i, x) => {
+//                     console.log(i, x)
+//                     return 0;
+//                 },
+//                 // z: 0,
+//                 duration: Math.random() * 1 + 3
+//             })
+//         })
+//     }
+// })
 // .from(towers, {
     
 // })

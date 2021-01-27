@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js" ></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/TextPlugin.min.js" integrity="sha512-2LEOQqARBlk67mYfoWcJah3Rt1Tan5TYsWUNBPtviIk206eyqQpUSpuBK5S77UFu3Pm+zlJOdw8uP5UfO/AtPw==" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js" integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug==" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js" integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug==" crossorigin="anonymous"></script>
     
     
     <title>Idan Sapir</title>
@@ -34,11 +34,12 @@
                 fragColor = vec4(col,1.0);
             }
     </script> -->
-    <!-- <script defer src="./js/trial.js" ></script> -->
+    <script defer src="./js/trial.js" ></script>
     <script defer src="./js/gsap.js"></script>
     <script defer src="./js/index.js"></script>
 </head>
 <body>
+    <div class="canvas"></div>
     <div class="container">
         
         <div class="cta__container">
@@ -62,7 +63,7 @@
                 </div>
                   <h1 class="header__heading">
                     <span class="header__heading-span header__heading-span--upper">נעים מאוד!</span>
-                    <span class="header__heading-span header__heading-span--lower">לינקולן - הנהלת רכש</span>
+                    <span class="header__heading-span header__heading-span--lower">לינקולן - הנהלת רכוש</span>
                 </h1>
                 <div class="header__desc-container">
                     <p class="header__desc">
@@ -93,7 +94,7 @@
                 <h2 class="perks__heading">היתרונות שלנו</h2>
                 <div class="perks__container">
                     <ul class="perks__list">
-                        
+
                         <li class="perks__item">ראש שקט, ללא הטרדות, שאלות, בעיות. אנחנו מטפלים בכל צרכי הנכס ודייריו.</li>
                         <li class="perks__item">אנו דואגים לתשואה מקסימאלית שניתן לקבל מן הנכס. </li>
                         <li class="perks__item">אנו דואגים לתחזוקה זולה אך יעילה של הנכס.</li>
@@ -121,10 +122,13 @@
     
     <section class="contact section">
         <div class="contact__bg">
-            <div class="contact__bg-words non-hebrew">
-                <span class="contact__bg-word">LINCOLN</span>  
+            <div class="contact__bg-words">
+                <span class="contact__bg-word">בואו</span>
+                <span class="contact__bg-word"> לעבוד</span>
+                <span class="contact__bg-word">איתנו!</span>
+                <!-- <span class="contact__bg-word">LINCOLN</span>  
                 <span class="contact__bg-word">PROPERTY</span>  
-                <span class="contact__bg-word">MANAGEMENT</span>
+                <span class="contact__bg-word">MANAGEMENT</span> -->
             </div>
         </div>
         <div class="contact__container">
@@ -143,9 +147,20 @@
                 </div>
                 <div class="contact__group">
                     <label for="" class="contact__label">תוכן הפנייה</label>
-                    <textarea class="contact__text" name="" id="" cols="30" rows="10"></textarea>
+                    <textarea class="contact__text" name="" id=""></textarea>
                 </div>
+                <button class="contact__submit">שלח</button>
             </div>
+            <h2 class="contact__heading">בואו להיות חלק מההצלחה!</h2>
+            <div class="contact__information">
+                <p class="contact__deet">לינקולן - הנהלת רכוש</p>
+                <p class="contact__deet">בית ציוני אמריקה, תל אביב</p>
+                <p class="contact__deet">טל': 051-23456789</p>
+                <p class="contact__deet">אי-מייל: bet@zionei.america</p>
+            </div>
+        </div>
+        <div class="contact__developer-container">
+            <a class="contact__developer-link" href="theexperienced.github.io/Portfolio" target="_blank">דניאל מזרחי  -  פיתוח אתרים</a>
         </div>
     </section>
 </body>
