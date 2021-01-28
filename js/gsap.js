@@ -2,15 +2,15 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.to('.target__bg', {
-    scrollTrigger: {
-        trigger: '.target',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1
-    },
-    opacity: 0
-});
+// gsap.to('.target__bg', {
+//     scrollTrigger: {
+//         trigger: '.target',
+//         start: 'top bottom',
+//         end: 'bottom top',
+//         scrub: 1
+//     },
+//     opacity: 0
+// });
 
 // gsap.to('.contact__bg-words', {
 //     scrollTrigger: {
@@ -33,7 +33,7 @@ gsap.to('.header', {
         trigger: '.header',
         start: 'top top',
         end: 'bottom 40%',
-        scrub: .7,
+        scrub: 1.2,
         // pin: true/
     },
     opacity: 0
