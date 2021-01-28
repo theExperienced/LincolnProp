@@ -15,6 +15,11 @@
     font-family: horev;
 }
 
+@font-face {
+    src:  url(../../fonts/dana/DanaYadAlefAlefAlef-Normal.otf);
+    font-family: dana;
+}
+
 @import './responsive-mixins';
 @import './normalized.scss';
 @import './mixins.scss';

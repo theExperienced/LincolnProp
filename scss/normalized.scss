@@ -55,7 +55,9 @@ h1, h2, p, li, label, span, input, textarea {
     font-weight: 100;
     // font-family: 'Modak', cursive;
 
-    &.non-hebrew {
+    &.non-hebrew, 
+    &.non-hebrew * {
+        text-align: left;
         direction: ltr;
     }
 } 
