@@ -69,8 +69,8 @@ const init = function () {
     renderer.setPixelRatio( window.devicePixelRatio );
     document.querySelector('.canvas').appendChild(renderer.domElement);
 
-    scene.background = new THREE.Color(0xfefefe);
-    scene.fog = new THREE.Fog(0xfefefe, -100, 500); // firmamentRadius * 5, firmamentRadius * 10);
+    scene.background = new THREE.Color(0x000000);
+    // scene.fog = new THREE.Fog(0x000000, -100, 500); // firmamentRadius * 5, firmamentRadius * 10);
     // scene.fog = new THREE.FogExp2(0x000000, .0134262);
 
 
@@ -203,7 +203,7 @@ const init = function () {
     // city.add(wall);
 
     towerMaxSide = 35;
-    towerMaxHeight = 200;
+    towerMaxHeight = 1400;
     numOfTowers = 13;
     takenSlots = [];
     towers = [];
@@ -213,11 +213,11 @@ const init = function () {
         
     for (let i = 0; i < numOfTowers; i++) {
         towerObject = new THREE.Object3D();
-        towerHeight = towerMaxHeight * Math.random() + 300;
+        towerHeight = towerMaxHeight * Math.random() + 1500;
         currSide = towerMaxSide * Math.random() + 10;
         towerGeo = new THREE.BoxBufferGeometry(currSide, currSide, towerHeight, 25, 25, 5);
         // towerGeo.translate( 0, 0.5, 0 );
-        towerMat = new THREE.MeshBasicMaterial({
+        towerMat = new THREE.MeshStandardMaterial({
             color: towerColors[Math.floor(Math.random() * towerColors.length)],
             // wireframe: true,
             roughness: .5,
@@ -251,7 +251,7 @@ const init = function () {
             // metalness: .9,
         });
         towerTop = new THREE.Mesh(topGeo, topMat);
-        towerObject.add(towerTop);
+        // towerObject.add(towerTop);
         towerTop.position.set(0, towerHeight / 2 + .1, 0);
         if(i % 3 === 0) {
             antenaGeo = new THREE.BoxBufferGeometry(Math.random() * .6 + .02, Math.random() * 50 + 3, Math.random() * .6 + .02);
@@ -310,10 +310,10 @@ const init = function () {
 
 
     mainLight = new THREE.AmbientLight(0xffffff, .5);
-    scene.add( mainLight );
+    // scene.add( mainLight );
 
-    directionalLight = new THREE.SpotLight(0xffffff, 1);
-    // scene.add(directionalLight);
+    directionalLight = new THREE.SpotLight(0xffffff, 11);
+    scene.add(directionalLight);
     directionalLight.castShdaow = true;
     directionalLight.shadowCameraVisible = true;
     // scene.add(lightTarget);
@@ -336,7 +336,7 @@ const init = function () {
 
 
     const axisHelper = new THREE.AxesHelper(2);
-    scene.add(axisHelper);
+    // scene.add(axisHelper);
     const controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.update();
     controls.enabled = true;
