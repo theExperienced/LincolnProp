@@ -67,7 +67,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const toggleIndi = document.querySelector('.header__toggle-indicator');
 
-gsap.to(toggleIndi, {
+const toggleDrop = gsap.to(toggleIndi, {
     yPercent: 50,
     duration: 3,
     ease: 'bounce.out',
@@ -85,5 +85,6 @@ gsap.to(toggleIndi, {
     onComplete: () => {
         console.log('toggle hidden');
         toggleIndi.classList.add('hidden');
+        toggleDrop.kill();
     }
 });

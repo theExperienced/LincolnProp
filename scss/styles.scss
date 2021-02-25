@@ -106,7 +106,7 @@ background: #555;
     // perspective: 2px;
     background-color: rgb(219, 218, 164);
     background-image: linear-gradient(to bottom, transparent, rgba(241, 223, 60, 0.61)),
-    radial-gradient(at 100% 0, rgba(243, 131, 131, 0.842), transparent 70%);//, 
+    radial-gradient(at 100% 0, rgba(252, 144, 3, 0.842), transparent 70%);//, 
     // url(https://cdn.pixabay.com/photo/2012/03/04/00/43/architecture-22039_1280.jpg);
     // background-attachment: auto, auto, fixed;
     // background-position: auto, auto, 0, 100vh;
@@ -188,7 +188,7 @@ background: #555;
         top: auto;
         width: 100%;
         height: 30rem;
-        background-image: radial-gradient(at 50% 50%, rgba(207, 159, 0, .35) 1px, transparent 2px);
+        background-image: radial-gradient(at 50% 50%, rgba(207, 159, 0, .15) 1px, transparent 2px);
         background-size: 2.15rem 2.15rem;
         z-index: -1;
     }
@@ -212,14 +212,11 @@ background: #555;
     &__logo {
         
         &-container {
-            opacity: .4;
+            opacity: .3;
             position: absolute;
             left: 0;
-            transform: translate(-8%, -20%);
+            transform: translate(-8%, -10%);
         }
-
-        height: 20rem;
-        width: 20rem;
     }
 
     &__info {
@@ -414,9 +411,9 @@ background: #555;
             width: 140%;
             height: 150%;
             $actualBG: rgb(151, 29, 60) 0px, transparent 2px;
-            background-image: radial-gradient(at 50% 50%, rgba(209, 91, 121, .85) 0px, transparent 2px);
-            background-image: radial-gradient(at 25% 25%, $actualBG), radial-gradient(at 75% 75%, $actualBG);
-            background-size: 2rem 2rem;
+            background-image: radial-gradient(at 50% 50%, rgba(209, 91, 121, .95) 0px, transparent 2px);
+            // background-image: radial-gradient(at 25% 25%, $actualBG), radial-gradient(at 75% 75%, $actualBG);
+            background-size: 1.8rem 1.8rem;
             clip-path: polygon(0 0, 73% 30%, 100% 100%, 0% 100%);
             clip-path: polygon(0 0, 71% 22%, 100% 100%, 18% 79%, 0% 60%, 0 21%);
             clip-path: polygon(0 0, 69% 29%, 100% 100%, 0 63%);
