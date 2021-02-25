@@ -29,17 +29,17 @@
 //     })
 // });
 
-document.querySelectorAll('.header__perk').forEach(perk => {
-console.log("🚀 ~ file: index.js ~ line 33 ~ document.querySelectorAll ~ perk", perk)
+document.querySelectorAll('.header__target').forEach(target => {
+console.log("🚀 ~ file: index.js ~ line 33 ~ document.querySelectorAll ~ target", target)
     
-    VanillaTilt.init(perk, {
+    VanillaTilt.init(target, {
         reverse:                false,  // reverse the tilt direction
         max:                    15,     // max tilt rotation (degrees)
         startX:                 0,      // the starting tilt on the X axis, in degrees.
         startY:                 0,      // the starting tilt on the Y axis, in degrees.
         perspective:            1000,   // Transform perspective, the lower the more extreme the tilt gets.
         scale:                  1.1,      // 2 = 200%, 1.5 = 150%, etc..
-        speed:                  100,    // Speed of the enter/exit transition
+        speed:                  3000,    // Speed of the enter/exit transition
         transition:             true,   // Set a transition on enter/exit.
         axis:                   null,   // What axis should be disabled. Can be X or Y.
         reset:                  true ,   // If the tilt effect has to be reset on exit.
@@ -56,4 +56,34 @@ console.log("🚀 ~ file: index.js ~ line 33 ~ document.querySelectorAll ~ perk"
         gyroscopeMinAngleY:     -45 ,    // This is the bottom limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the top border of the element;
         gyroscopeMaxAngleY:     45  ,    // This is the top limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the bottom border of the element;
     })
-})
+});
+
+
+/////////////////GSAP
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+const toggleIndi = document.querySelector('.header__toggle-indicator');
+
+gsap.to(toggleIndi, {
+    yPercent: 50,
+    duration: 3,
+    ease: 'bounce.out',
+    repeat: -1,
+    
+});
+
+gsap.to(toggleIndi, {
+    scrollTrigger: {
+        trigger: '.header',
+        start: 'bottom 90%',
+        duration: .2
+    },
+    opacity: 0,
+    onComplete: () => {
+        console.log('toggle hidden');
+        toggleIndi.classList.add('hidden');
+    }
+});
